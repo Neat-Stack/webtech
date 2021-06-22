@@ -1,0 +1,73 @@
+<%- include("../partials/header.ejs")%>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<p class="lead">
+				YelpCamp
+			</p>
+			<div class="list-group">
+				<li class="list-group-item">Location: India</li>
+				<li class="list-group-item">Posted 2 days ago</li>
+			</div>
+		</div>
+		<div class="col-md-9">
+			
+			<div class="thumbnail">
+				<img class="img-responsive" src=<%= campVal.url%>>
+				<div class="caption-full">
+				<h4 class="pull-right"><%=campVal.price%> /Per Night</h4>
+				<a><h2><%=campVal.name%></h2></a>
+				<p><%= campVal.description%></p>
+			</div>
+			</div>
+			<div class="well">
+				<h2>Reviews</h2>
+				<hr>
+				
+				<% campVal.comments.forEach((comment)=>{%>
+					<blockquote>
+						<p><%= comment.text%></p>
+												<span class="pull-right" style="font-size:.75em;">10 Days Ago</span>
+                        <footer class="blockquote-footer"><strong><%=comment.author.username%></strong></footer>
+                        <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+							<a class="btn btn-warning btn-sm" href="/posts/<%=campVal.id%>/comments/<%=comment.id%>/edit/#Edit-Comment">Edit Comment</a>
+							<form style='display:inline;' action="/posts/<%=campVal.id%>/comments/<%=comment.id%>?_method=DELETE" method="POST">
+								<button class='btn btn-sm btn-danger'>Delete</button>
+							</form> 
+                        <%}%>
+                    </blockquote>
+                    <section id="Edit-Comment">
+                      
+				<%})%>
+					<div class="container">
+						<form action="/posts/<%=campVal.id%>/comments/<%=foundComment.id%>?_method=PUT" method="POST">
+							<div class="row">
+								<div class="col-md-4" >
+									<h3 class="text-primary">Edit Comment for <%= campVal.name%></h3>
+									<p class="text-info">Missed something? Made a mistake? No worries!</p>
+										<!-- <div class="form-group">
+											<input class="form-control" type="text" placeholder="Name" name="comment[author]">	
+											</div> -->
+											<div class="form-group">
+												<input class="form-control" type="text" placeholder="Tell Us about this Camp!" name="comment[text]" value='<%=foundComment.text%>'>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-block btn-info " >
+													Update comment !
+												</button>		
+											</div>
+											<div class="form-group">
+												<a href="/posts/<%=campVal.id%>/#Review">Cancel</a>
+											</div>
+										</div>	
+									</div>
+						</form>
+					</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+    </section>
+
+<%- include("../partials/footer.ejs")%>

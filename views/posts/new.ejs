@@ -1,0 +1,60 @@
+<%- include("../partials/header.ejs")%>
+<div class="container">
+	<form action="/posts/" method="POST">
+		<div class="row">
+			<div style="width:30%; margin:0 auto;">
+					<h3 class="text-primary">
+		Add an item you'd Love to Sell!
+	</h3>
+	<p class="text-info">
+		Tell us about it!
+	</p>
+			
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder=" Name" name="name">	
+				</div>
+				
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Image URL of the item" name="url">
+				</div>
+				
+				<div class="form-group">
+					<input class="form-control" type="textarea" placeholder="Description" name="description">
+				</div>
+				
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Pricing" name="price">
+				</div>
+				
+				<div class="form-group">
+					
+	<button type="submit" class="btn btn-block btn-success " >
+		Add to our Database!
+		
+	</button>		
+				</div>
+				<div class="form-group">
+					<a href="/posts">Go Back</a>
+				</div>
+				
+				
+					
+				
+		
+	
+	
+	
+			</div>	
+			</div>
+
+
+</form>
+	</div>
+
+
+
+
+
+
+
+<%- include("../partials/footer.ejs")%>

@@ -1,0 +1,59 @@
+<%- include("../partials/header.ejs")%>
+<div class="container">
+	<form action="/posts/<%=campVal._id%>?_method=PUT" method="POST">
+		<div class="row">
+			<div style="width:30%; margin:0 auto;">
+					<h3 class="text-primary">
+		Edit <%=campVal.name%>
+	</h3>
+	<p class="text-info">
+		Missed Some details? Well here's your chance!
+	</p>
+			
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Campground Name" name="camp[name]" value='<%=campVal.name%>'>	
+				</div>
+				
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Image URL of the Place" name="camp[url]" value='<%=campVal.url%>'>
+				</div>
+				
+				<div class="form-group">
+					<input class="form-control" type="textarea" placeholder="Description of the Campground" name="camp[description]" value='<%=campVal.description%>''>
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Pricing" name="camp[price]" value='<%=campVal.price%>'>
+				</div>
+				
+				<div class="form-group">
+					
+	<button type="submit" class="btn btn-block btn-success " >
+		Edit Item!
+		
+	</button>		
+				</div>
+				<div class="form-group">
+					<a href="/posts">Go Back</a>
+				</div>
+				
+				
+					
+				
+		
+	
+	
+	
+			</div>	
+			</div>
+
+
+</form>
+	</div>
+
+
+
+
+
+
+
+<%- include("../partials/footer.ejs")%>

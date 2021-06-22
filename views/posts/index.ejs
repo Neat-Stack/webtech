@@ -1,0 +1,40 @@
+<%- include("../partials/header.ejs")%>
+
+<div class="container">
+	<header class="jumbotron">
+		<h1 class="text-secondary">
+	Redbay Shop!
+</h1>
+		<p>
+			View our handpicked Items selected just for you!
+		</p>
+		<p>
+			<a class="btn btn-success btn-lg" href="/posts/new">Add Your Reddbay Item Here!</a>
+		</p>
+</header>
+		
+		<div class="row text-center"  style="display:flex; flex-wrap:wrap;">	
+			<% campVal.forEach((val)=>{ %>
+				<div class="col-md-3 col-sm-6">
+						<div class="thumbnail">
+							<img src="<%=val.url%>"> <!-- QUOTES ARE IMP FOR SRC EVEN IF JS IS CALLED -->
+							<div class="caption">
+								<h4><%= val.name%></h4>
+								
+							</div>
+							<p>
+									<a class="btn btn-primary" href="/posts/<%= val.id%>">More Info</a>
+								</p>
+
+								<div>
+									<p> Posted by <%=val.author.username%></p>
+								</div>
+						</div>
+						
+						
+					 </div>		
+			<% }); %>
+		</div>
+</div>
+<%- include("../partials/footer.ejs")%>			
+	

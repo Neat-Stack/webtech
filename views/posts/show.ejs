@@ -1,0 +1,67 @@
+<%- include("../partials/header.ejs")%>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 col-lg-3">
+			<p class="lead">
+				Reddbay!</p>
+				<div class="list-group">
+					<li class="list-group-item">Location: India</li>
+					<li class="list-group-item">Posted 2 days ago</li>
+				</div>
+		</div>
+		<div class="col-md-9 col-lg-9">
+				<div class="thumbnail">
+					<img class="img-responsive" src=<%= campVal.url%>>
+					<div class="caption-full">
+				<h4 class="pull-right"><%=campVal.price%>/ Per Qty</h4>
+				
+				<a><h2><%=campVal.name%></h2></a>
+				<p class="pull-right"  style="color: grey;">Posted By <%= campVal.author.username%></p>
+				<p><%= campVal.description%></p>
+				
+				<%if(currentUser && campVal.author.id.equals(currentUser._id)){%>
+					<form action="/posts/<%=campVal._id%>?_method=DELETE" method="POST" style='display: inline; margin: 0 3px;'>
+						<button class='btn btn-md btn-danger'>Delete Item</button>
+					</form>
+					<a href="/posts/<%=campVal.id%>/edit" class='btn btn-md btn-warning' style='float: left;'>Update Item</a></div>
+
+				<%}%>
+					
+						
+
+				
+				
+				
+			</div>
+				</div>
+			
+			
+			<section id="Review">		
+				<div class="well">
+					<a class="btn btn-info btn-md pull-right" 	href="/posts/<%=campVal.id%>/comments/new/#New-Comment">Leave A Review</a>
+					<h2>Reviews</h2>
+					<hr>
+					<% campVal.comments.forEach((comment)=>{%>
+						<blockquote>	
+							<p>
+								<%= comment.text%>	
+							</p>
+							<span style="font-size:.75em;" class="pull-right">10 Days Ago</span>
+							
+							<footer class="blockquote-footer"><strong><%=comment.author.username%></strong></footer>
+							<%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+								<a class="btn btn-warning btn-sm" href="/posts/<%=campVal.id%>/comments/<%=comment.id%>/edit/#Edit-Comment">Edit Comment</a>
+								<form style='display:inline;' action="/posts/<%=campVal.id%>/comments/<%=comment.id%>?_method=DELETE" method="POST">
+									<button class='btn btn-sm btn-danger'>Delete</button>
+								</form> 
+							<%}%>
+						</blockquote>
+						<%})%>
+				</div>
+				</section>	
+			</div>
+		</div>
+	</div>
+
+
+<%- include("../partials/footer.ejs")%>

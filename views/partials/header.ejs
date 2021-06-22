@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReddBay!-Item Shop.</title> 
+	<!-- Latest compiled and minified CSS -->
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+
+</head>
+<body>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	<nav class="navbar navbar-inverse ">
+
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">ReddBay</a>
+			</div>
+			<div class="colapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<%if(!currentUser){%>
+						<li><a href="/login">Log In</a></li>
+						<li><a href="/register">Sign Up</a></li>
+					
+					<%}else{%>
+						<li ><a href='/'><%=currentUser.name%></a></li>
+						<li><a href="/logout">Log Out</a></li>
+					<%}%>
+					
+				</ul>
+			</div>
+			
+	</div>
+
+</nav>
+<div class="container">
+	<%if(error && error.length>0){%>
+		<div class="alert alert-danger" role="alert"><%=error%></div>
+	<%}%>
+
+	<%if(success && success.length>0){%>
+		<div class="alert alert-success" role="alert"><%=success%></div>
+		<%}%>
+		
+	
+	
+
+</div>
+

@@ -1,0 +1,66 @@
+<%- include("../partials/header.ejs")%>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<p class="lead">
+				YelpCamp
+			</p>
+			<div class="list-group">
+				<li class="list-group-item">Location: India</li>
+				<li class="list-group-item">Posted 2 days ago</li>
+			</div>
+		</div>
+		<div class="col-md-9">
+			
+			<div class="thumbnail">
+				<img class="img-responsive" src=<%= campVal.url%>>
+				<div class="caption-full">
+				<h4 class="pull-right"><%=campVal.price%> /Per Night</h4>
+				<a><h2><%=campVal.name%></h2></a>
+				<p><%= campVal.description%></p>
+			</div>
+			</div>
+			<div class="well">
+				<h2>Reviews</h2>
+				<hr>
+				<section id="New-Comment">
+				<% campVal.comments.forEach((comment)=>{%>
+					<blockquote>
+
+						<p><%= comment.text%></p>
+												<span class="pull-right" style="font-size:.75em;">10 Days Ago</span>
+						<!-- <footer class="blockquote-footer"><strong><%=comment.author.username%></strong>								</footer> -->
+					</blockquote>
+				<%})%>
+					<div class="container">
+						<form action="/posts/<%=campVal.id%>/comments" method="POST">
+							<div class="row">
+								<div class="col-md-4" >
+									<h3 class="text-primary">Add a Comment for <%= campVal.name%></h3>
+									<p class="text-info">Tell us about it!</p>
+										<!-- <div class="form-group">
+											<input class="form-control" type="text" placeholder="Name" name="comment[author]">	
+											</div> -->
+											<div class="form-group">
+												<input class="form-control" type="text" placeholder="Tell Us about this Camp!" name="comment[text]">
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-block btn-success " >
+													Add to our Database!
+												</button>		
+											</div>
+											<div class="form-group">
+												<a href="/posts/<%=campVal.id%>/#Review">Cancel</a>
+											</div>
+										</div>	
+									</div>
+						</form>
+					</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<%- include("../partials/footer.ejs")%>
