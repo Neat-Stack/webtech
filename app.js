@@ -46,7 +46,7 @@ app.use(postRoutes)
 mongoose.set('useNewUrlParser',true);
 mongoose.set( 'useUnifiedTopology', true );
 
-mongoose.connect("mongodb://localhost/reddit_Clone");
+mongoose.connect("mongodb+srv://admin-amit:sonunandini@cluster0.k902j.mongodb.net/FoodEx/N_RedditClone");
 
 
 //====================models import===================
